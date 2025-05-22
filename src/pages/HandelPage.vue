@@ -5,25 +5,31 @@
 
       <!-- Статьи текущей страницы -->
       <q-card
-        v-for="artikel in paginatedArtikels"
+        v-for="(artikel, index) in paginatedArtikels"
         :key="artikel.id"
         class="my-card"
         clickable
         @click="goToArtikel(artikel.id)"
       >
-        <div class="artikel-container">
-          <div class="date-block">
-            <div>{{ formatDate(artikel.date).day }}</div>
-            <div>{{ formatDate(artikel.date).month }}</div>
-            <div>{{ formatDate(artikel.date).time }}</div>
-          </div>
+        <q-img
+          :src="artikel.image"
+          class="artikel-image"
+          spinner-color="primary"
+          style="min-width: 150px; min-height: 150px"
+        />
 
-          <q-img
-            :src="artikel.image"
-            class="artikel-image"
-            spinner-color="primary"
-            style="min-width: 150px; min-height: 150px"
-          />
+        <div class="artikel-container">
+          <div
+            class="date-block"
+            :class="{
+              'no-after-line': index === paginatedArtikels.length - 1,
+              'no-before-line': index === 0,
+            }"
+          >
+            <div>{{ formatDate(artikel.date).day }}</div>
+            <div class="month">{{ formatDate(artikel.date).month }}</div>
+            <div class="time">{{ formatDate(artikel.date).time }}</div>
+          </div>
 
           <div class="content-block">
             <div class="date-author">{{ artikel.date }} — {{ artikel.author }}</div>
@@ -112,14 +118,12 @@ function formatDate(dateStr) {
 <style scoped>
 .my-card {
   max-width: 700px;
-  margin: 0 auto 15px auto; /* добавлен margin-bottom: 15px */
+  margin: 0 auto 15px;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
-  height: 200px;
   display: flex;
-  align-items: center;
-  padding: 10px 15px;
   box-sizing: border-box;
+  gap: 15px;
 }
 
 .my-card:not(:last-child) {
@@ -132,14 +136,20 @@ function formatDate(dateStr) {
 
 .artikel-container {
   display: flex;
-  width: 100%;
-  height: 100%;
   align-items: center;
-  gap: 15px;
+  height: 200px;
+  width: 100%;
+  padding: 10px 15px;
   box-sizing: border-box;
+  background: #fff;
+  border-radius: 12px;
+  gap: 15px;
 }
 
 .date-block {
+  position: absolute;
+  left: -64px;
+  top: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,42 +158,41 @@ function formatDate(dateStr) {
   font-size: 14px;
   color: var(--neutrals-grey, #484848);
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  background: #fff;
   height: fit-content;
 }
 
 .date-block > div:last-child {
   background: var(--red-100, #fa0f2b);
   color: #fff;
-  padding: 2px 6px;
-  border-radius: 0 0 12px 12px;
+  padding: 2px 10px;
+  border-radius: 0 0 6px 6px;
   margin-top: 4px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px !important;
+}
+
+.month {
+  font-weight: 400;
+  font-size: 10px;
 }
 
 .artikel-image {
   width: 200px !important;
   height: 200px !important;
-  border-radius: 6px 0 0 6px; /* top-left, top-right, bottom-right, bottom-left */
-  object-fit: cover;
   flex-shrink: 0;
 }
 
 .content-block {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
+  width: 100%;
 }
 
-.date-author {
+.date-author,
+.content-preview {
   font-size: 14px;
   color: var(--neutrals-grey, #484848);
-  margin-bottom: 4px;
 }
 
 .titel {
@@ -197,8 +206,6 @@ function formatDate(dateStr) {
 }
 
 .content-preview {
-  font-size: 14px;
-  color: var(--neutrals-grey, #484848);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -211,62 +218,90 @@ function formatDate(dateStr) {
   width: 100%;
 }
 
-/* Пробиваем scoped, чтобы задать стили для внутренних кнопок пагинации */
+/* ::v-deep оптимизации */
 ::v-deep(.q-pagination__middle) {
   display: flex !important;
   justify-content: center !important;
-  gap: 3px; /* чтобы кнопки не слипались */
+  gap: 3px;
 }
 
-/* Активная страница - кнопка с aria-current="true" и классом q-btn--standard */
-::v-deep(button.q-btn[aria-current='true']) {
-  background-color: var(--red-100, #fa0f2b) !important;
-  color: #ffffff !important;
-  border-radius: 6px !important;
-}
-
-/* Для всех остальных кнопок пагинации */
-::v-deep(button.q-btn:not([aria-current='true'])) {
-  background-color: transparent !important;
-  color: var(--primary) !important; /* или цвет по умолчанию */
+::v-deep(button.q-btn) {
   border-radius: 6px !important;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
-/* При наведении на кнопки (неактивные) */
+::v-deep(button.q-btn[aria-current='true']) {
+  background-color: var(--red-100, #fa0f2b) !important;
+  color: #fff !important;
+}
+
+::v-deep(button.q-btn:not([aria-current='true'])) {
+  background: transparent !important;
+  color: var(--primary) !important;
+}
+
 ::v-deep(button.q-btn:not([aria-current='true']):hover) {
   background-color: var(--red-100, #fa0f2b) !important;
   color: #fff !important;
 }
 
+::v-deep(.date-block) {
+  position: absolute;
+}
+
+::v-deep(.date-block::before),
+::v-deep(.date-block::after) {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+::v-deep(.date-block::before) {
+  top: 20px;
+  height: 200px;
+  width: 0.5px;
+  background-color: #e5e5e5;
+}
+
+::v-deep(.date-block.no-after-line::before) {
+  display: none !important;
+}
+
+/* Адаптив */
 @media (max-width: 600px) {
   .my-card {
-    height: auto;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
+    height: auto;
   }
+
   .artikel-container {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
+
   .date-block {
     flex: none;
     width: 100%;
     text-align: left;
   }
+
   .artikel-image {
     width: 100%;
     height: auto !important;
-    min-height: auto;
     border-radius: 6px;
   }
+
   .content-block {
     width: 100%;
   }
+
   .titel {
     white-space: normal;
   }
