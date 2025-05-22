@@ -12,7 +12,13 @@ const messages = {
       home_caption: 'Home Page',
       handel: 'Trade',
       handel_caption: 'News and Articles',
+      add_news: 'Add News',
+      add_news_caption: 'Create your own news',
       app_title: 'My Test Quasar Project',
+    },
+    add_news: {
+      title: 'Add News',
+      description: 'Here you can add a new news article.',
     },
   },
   de: {
@@ -26,7 +32,13 @@ const messages = {
       home_caption: 'Startseite',
       handel: 'Handel',
       handel_caption: 'Nachrichten und Artikel',
+      add_news: 'News hinzufügen',
+      add_news_caption: 'Eigene News erstellen',
       app_title: 'Mein Test Quasar Projekt',
+    },
+    add_news: {
+      title: 'News hinzufügen',
+      description: 'Hier kannst du einen neuen Nachrichtenartikel hinzufügen.',
     },
   },
 }

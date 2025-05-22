@@ -79,6 +79,12 @@ const linksList = computed(() => [
     icon: 'article',
     link: '/handel',
   },
+  {
+    title: i18n.global.t('menu.add_news'),
+    caption: i18n.global.t('menu.add_news_caption'),
+    icon: 'add_circle',
+    link: '/add-news',
+  },
 ])
 
 const leftDrawerOpen = ref(false)
