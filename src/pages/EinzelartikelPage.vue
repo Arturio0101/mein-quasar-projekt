@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md artikel-detail">
     <div v-if="artikel" class="artikel-container">
-      <h1 class="artikel-title">{{ artikel.titel }}</h1>
+      <h1 class="artikel-title">{{ titel }}</h1>
 
       <div class="artikel-meta q-mb-sm">
         <div class="artikel-date">{{ artikel.date }}</div>
@@ -11,7 +11,7 @@
       <div class="artikel-content q-mt-md">
         <q-img :src="artikel.image" class="inline-image" spinner-color="primary" />
         <p>
-          {{ artikel.content }}
+          {{ content }}
         </p>
       </div>
     </div>
@@ -25,13 +25,39 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import artikels from 'src/data/news.json'
+
+// Получаем язык из пропсов
+const props = defineProps({
+  language: {
+    type: String,
+    default: 'de',
+  },
+})
 
 const route = useRoute()
 const artikelId = parseInt(route.params.id)
 
+// Следим за текущим языком
+const lang = ref(props.language)
+watch(
+  () => props.language,
+  (newLang) => {
+    lang.value = newLang
+  },
+)
+
+// Найти статью
 const artikel = computed(() => artikels.artikels.find((a) => a.id === artikelId))
+
+function getLocalizedObjectField(article, fieldName, langRef) {
+  if (!article || !article[fieldName]) return ''
+  return article[fieldName][langRef.value] || article[fieldName]['de'] || ''
+}
+
+const titel = computed(() => getLocalizedObjectField(artikel.value, 'titel', lang))
+const content = computed(() => getLocalizedObjectField(artikel.value, 'content', lang))
 </script>
 
 <style scoped>

@@ -2,64 +2,112 @@
   "artikels": [
     {
       "id": 1,
-      "titel": "Klombo und Mecha Team Leader aus Fortnite erstmals als LEGO Sets erhältlich",
-      "content": "Die LEGO Gruppe stellt heute vier neue LEGO® Fortnite® Sets vor, mit denen Fans ihre liebsten Charaktere und Spielmomente aus LEGO Fortnite Odyssey und Fortnite nachbauen können. Ab dem 1. Juni 2025 sind drei neue Sets im Handel erhältlich: das LEGO® Fortnite® Peely & Sparkplug’s Camp, das LEGO® Fortnite® Durrr Burger Restaurant sowie das LEGO® Fortnite® Klombo Set. Das vierte Set, der LEGO® Fortnite® Mecha Team Leader, ist ab sofort vorbestellbar und ab dem 1. August 2025 erhältlich.",
+      "titel": {
+        "de": "Klombo und Mecha Team Leader aus Fortnite erstmals als LEGO Sets erhältlich",
+        "en": "Klombo and Mecha Team Leader from Fortnite available as LEGO sets for the first time"
+      },
+      "content": {
+        "de": "Die LEGO Gruppe stellt heute vier neue LEGO® Fortnite® Sets vor, mit denen Fans ihre liebsten Charaktere und Spielmomente aus LEGO Fortnite Odyssey und Fortnite nachbauen können. Ab dem 1. Juni 2025 sind drei neue Sets im Handel erhältlich: das LEGO® Fortnite® Peely & Sparkplug’s Camp, das LEGO® Fortnite® Durrr Burger Restaurant sowie das LEGO® Fortnite® Klombo Set. Das vierte Set, der LEGO® Fortnite® Mecha Team Leader, ist ab sofort vorbestellbar und ab dem 1. August 2025 erhältlich.",
+        "en": "The LEGO Group today introduces four new LEGO® Fortnite® sets, allowing fans to recreate their favorite characters and moments from LEGO Fortnite Odyssey and Fortnite. Starting June 1, 2025, three new sets will be available: LEGO® Fortnite® Peely & Sparkplug’s Camp, LEGO® Fortnite® Durrr Burger Restaurant, and LEGO® Fortnite® Klombo Set. The fourth set, LEGO® Fortnite® Mecha Team Leader, is available for pre-order now and will be released August 1, 2025."
+      },
       "date": "12.03.2025 16:12",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 2,
-      "titel": "Auf in den Sommer mit den wiedeverwendbaren Bunch O Balloons",
-      "content": "Der Sommer steht hoffentlich bald in den Startlöchern und mit den wiederverwendbaren Bunch O Balloons Wasserballonsvom neuseeländischen Spielwarenhersteller ZURU werden die Wasserschlachten in diesem Sommer für endlosen Spaß sorgen. Dank der innovativen Magnettechnologie können die Wasserballons immer wieder verwendet werden, bis zu 10.000 mal pro Ballon! Aus weichem Silikon hergestellt, machen diese leichten Ballons beim Aufprall den perfekten Spritzer. Die magnetische Safe-Seal-Technologie sorgt für eine starke Versiegelung. Die Wasserballons gibt es in 6 verschiedenen bunten Farben im 3er oder 6er Pack. Einfach öffnen, eintauchen, schließen und auf in die ultimative Wasserschlacht!",
+      "titel": {
+        "de": "Auf in den Sommer mit den wiedeverwendbaren Bunch O Balloons",
+        "en": "Heading into summer with the reusable Bunch O Balloons"
+      },
+      "content": {
+        "de": "Der Sommer steht hoffentlich bald in den Startlöchern und mit den wiederverwendbaren Bunch O Balloons Wasserballons vom neuseeländischen Spielwarenhersteller ZURU werden die Wasserschlachten in diesem Sommer für endlosen Spaß sorgen. Dank der innovativen Magnettechnologie können die Wasserballons immer wieder verwendet werden, bis zu 10.000 mal pro Ballon! Aus weichem Silikon hergestellt, machen diese leichten Ballons beim Aufprall den perfekten Spritzer. Die magnetische Safe-Seal-Technologie sorgt für eine starke Versiegelung. Die Wasserballons gibt es in 6 verschiedenen bunten Farben im 3er oder 6er Pack. Einfach öffnen, eintauchen, schließen und auf in die ultimative Wasserschlacht!",
+        "en": "Summer is hopefully just around the corner, and with the reusable Bunch O Balloons water balloons from New Zealand toy maker ZURU, water fights this summer will be endless fun. Thanks to innovative magnet technology, the water balloons can be reused up to 10,000 times each! Made of soft silicone, these lightweight balloons create the perfect splash on impact. The magnetic Safe-Seal technology ensures a strong seal. The water balloons come in 6 different colorful shades in packs of 3 or 6. Simply open, dip, close, and get ready for the ultimate water fight!"
+      },
       "date": "11.03.2025 15:15",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 3,
-      "titel": "Von tierisch süß bis heldenhaft: fünf Ostergeschenktipps von Moose Toys ",
-      "content": "Vielfältige Geschenktipps zu Ostern gesucht? Moose Toys präsentiert spannende neue Spielzeuge für kleine Tierfreund:innen und (Alltags-)Held:innen, die zum Spielen,",
+      "titel": {
+        "de": "Von tierisch süß bis heldenhaft: fünf Ostergeschenktipps von Moose Toys ",
+        "en": "From adorably cute to heroic: five Easter gift ideas from Moose Toys"
+      },
+      "content": {
+        "de": "Vielfältige Geschenktipps zu Ostern gesucht? Moose Toys präsentiert spannende neue Spielzeuge für kleine Tierfreund:innen und (Alltags-)Held:innen, die zum Spielen,",
+        "en": "Looking for diverse Easter gift ideas? Moose Toys presents exciting new toys for little animal lovers and everyday heroes, perfect for playing,"
+      },
       "date": "10.03.2025 14:01",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 4,
-      "titel": "GLUBSCHIS von NICI: Mehr Größen, mehr Charaktere, mehr Sammelspaß! ",
-      "content": "Vielfältige Geschenktipps zu Ostern gesucht? Moose Toys präsentiert spannende neue Spielzeuge für kleine Tierfreund:innen und (Alltags-)Held:innen, die zum Spielen,",
+      "titel": {
+        "de": "GLUBSCHIS von NICI: Mehr Größen, mehr Charaktere, mehr Sammelspaß! ",
+        "en": "GLUBSCHIS by NICI: More sizes, more characters, more collecting fun!"
+      },
+      "content": {
+        "de": "Vielfältige Geschenktipps zu Ostern gesucht? Moose Toys präsentiert spannende neue Spielzeuge für kleine Tierfreund:innen und (Alltags-)Held:innen, die zum Spielen,",
+        "en": "Looking for diverse Easter gift ideas? Moose Toys presents exciting new toys for little animal lovers and everyday heroes, perfect for playing,"
+      },
       "date": "13.03.2025 14:12",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 5,
-      "titel": "Entdecke die LEGO Highlights zum Schulanfang ",
-      "content": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+      "titel": {
+        "de": "Entdecke die LEGO Highlights zum Schulanfang ",
+        "en": "Discover LEGO highlights for the start of school"
+      },
+      "content": {
+        "de": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+        "en": "The start of school marks an exciting new chapter for many children. The LEGO Group offers matching sets that bring joy and also important "
+      },
       "date": "10.03.2025 16:12",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 6,
-      "titel": "Entdecke die LEGO Highlights zum Schulanfang ",
-      "content": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+      "titel": {
+        "de": "Entdecke die LEGO Highlights zum Schulanfang ",
+        "en": "Discover LEGO highlights for the start of school"
+      },
+      "content": {
+        "de": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+        "en": "The start of school marks an exciting new chapter for many children. The LEGO Group offers matching sets that bring joy and also important "
+      },
       "date": "10.03.2025 16:12",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 7,
-      "titel": "Entdecke die LEGO Highlights zum Schulanfang ",
-      "content": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+      "titel": {
+        "de": "Entdecke die LEGO Highlights zum Schulanfang ",
+        "en": "Discover LEGO highlights for the start of school"
+      },
+      "content": {
+        "de": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+        "en": "The start of school marks an exciting new chapter for many children. The LEGO Group offers matching sets that bring joy and also important "
+      },
       "date": "09.03.2025 16:16",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"
     },
     {
       "id": 8,
-      "titel": "Entdecke die LEGO Highlights zum Schulanfang ",
-      "content": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+      "titel": {
+        "de": "Entdecke die LEGO Highlights zum Schulanfang ",
+        "en": "Discover LEGO highlights for the start of school"
+      },
+      "content": {
+        "de": "Mit dem Schulanfang startet für viele Kinder ein aufregender neuer Lebensabschnitt. Die LEGO Gruppe bietet dafür passende Sets, die nicht nur Freude bereiten, sondern auch wichtige ",
+        "en": "The start of school marks an exciting new chapter for many children. The LEGO Group offers matching sets that bring joy and also important "
+      },
       "date": "09.03.2025 16:19",
       "image": "https://picsum.photos/200/300",
       "author": "Brandora"

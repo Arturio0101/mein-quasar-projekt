@@ -1,9 +1,105 @@
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import artikelsData from 'src/data/news.json'
+
+const props = defineProps({
+  language: {
+    type: String,
+    default: 'de',
+  },
+})
+
+const router = useRouter()
+const artikels = artikelsData.artikels
+
+const itemsPerPage = 4
+const currentPage = ref(1)
+const searchQuery = ref('')
+
+// Фильтрация с учётом выбранного языка
+const filteredArtikels = computed(() => {
+  return artikels.filter((artikel) =>
+    artikel.titel[props.language].toLowerCase().includes(searchQuery.value.toLowerCase()),
+  )
+})
+
+const paginatedArtikels = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage
+  return filteredArtikels.value.slice(start, start + itemsPerPage)
+})
+
+const maxPages = computed(() => {
+  return Math.ceil(filteredArtikels.value.length / itemsPerPage)
+})
+
+function goToArtikel(id) {
+  router.push(`/artikel/${id}`)
+}
+
+function formatDate(dateStr, lang = 'de') {
+  const [datePart, timePart] = dateStr.split(' ')
+  const [day, monthNum] = datePart.split('.')
+
+  const months = {
+    de: [
+      'Januar',
+      'Februar',
+      'März',
+      'April',
+      'Mai',
+      'Juni',
+      'Juli',
+      'August',
+      'September',
+      'Oktober',
+      'November',
+      'Dezember',
+    ],
+    en: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    // добавьте другие языки по необходимости
+  }
+
+  const monthIndex = parseInt(monthNum, 10) - 1
+  const monthName = months[lang]?.[monthIndex] || ''
+
+  return { day, month: monthName, time: timePart }
+}
+</script>
+
 <template>
   <q-page padding>
     <div class="q-gutter-md">
       <h1>Handel</h1>
+      <q-input v-model="searchQuery" label="Suche" class="q-mb-md" :clearable="false">
+        <template v-slot:append>
+          <div class="q-field__append q-field__marginal row no-wrap items-center q-anchor--skip">
+            <i
+              class="q-icon notranslate material-icons cursor-pointer q-field__focusable-action"
+              aria-label="Clear"
+              role="button"
+              tabindex="0"
+              @click="searchQuery = ''"
+            >
+              cancel
+            </i>
+          </div>
+        </template>
+      </q-input>
 
-      <!-- Статьи текущей страницы -->
       <q-card
         v-for="(artikel, index) in paginatedArtikels"
         :key="artikel.id"
@@ -27,25 +123,24 @@
             }"
           >
             <div>{{ formatDate(artikel.date).day }}</div>
-            <div class="month">{{ formatDate(artikel.date).month }}</div>
+            <div class="month">{{ formatDate(artikel.date, language).month }}</div>
             <div class="time">{{ formatDate(artikel.date).time }}</div>
           </div>
 
           <div class="content-block">
             <div class="date-author">{{ artikel.date }} — {{ artikel.author }}</div>
-            <div class="titel">{{ artikel.titel }}</div>
+            <div class="titel">{{ artikel.titel[language] }}</div>
             <p class="content-preview">
               {{
-                artikel.content.length > 150
-                  ? artikel.content.substring(0, 150) + '...'
-                  : artikel.content
+                artikel.content[language].length > 150
+                  ? artikel.content[language].substring(0, 150) + '...'
+                  : artikel.content[language]
               }}
             </p>
           </div>
         </div>
       </q-card>
 
-      <!-- Пагинация -->
       <div class="pagination-wrapper">
         <q-pagination
           v-model="currentPage"
@@ -59,61 +154,6 @@
     </div>
   </q-page>
 </template>
-
-<script setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import artikelsData from 'src/data/news.json'
-
-const router = useRouter()
-const artikels = artikelsData.artikels
-
-const itemsPerPage = 4
-const currentPage = ref(1)
-
-const maxPages = computed(() => {
-  return Math.ceil(artikels.length / itemsPerPage)
-})
-
-const paginatedArtikels = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage
-  return artikels.slice(start, start + itemsPerPage)
-})
-
-function goToArtikel(id) {
-  router.push(`/artikel/${id}`)
-}
-
-// Функция парсинга даты вида "12.03.2025 16:12"
-function formatDate(dateStr) {
-  const [datePart, timePart] = dateStr.split(' ')
-  const [day, monthNum] = datePart.split('.')
-
-  const months = [
-    'Januar',
-    'Februar',
-    'März',
-    'April',
-    'Mai',
-    'Juni',
-    'Juli',
-    'August',
-    'September',
-    'Oktober',
-    'November',
-    'Dezember',
-  ]
-
-  const monthIndex = parseInt(monthNum, 10) - 1
-  const monthName = months[monthIndex] || ''
-
-  return {
-    day,
-    month: monthName,
-    time: timePart,
-  }
-}
-</script>
 
 <style scoped>
 .my-card {
@@ -272,38 +312,86 @@ function formatDate(dateStr) {
 }
 
 /* Адаптив */
+/* Мобильный адаптив */
 @media (max-width: 600px) {
   .my-card {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
+    align-items: center;
+    padding: 12px;
     height: auto;
+    box-sizing: border-box;
   }
 
   .artikel-container {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .date-block {
-    flex: none;
+    align-items: center;
     width: 100%;
-    text-align: left;
+    gap: 10px;
+    padding: 0;
   }
 
   .artikel-image {
-    width: 100%;
-    height: auto !important;
-    border-radius: 6px;
+    width: 90%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+
+  .date-block {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-bottom: 10px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .date-block > div {
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #333;
+  }
+
+  .date-block > div:last-child {
+    background: #fa0f2b;
+    color: #fff;
+    border-radius: 4px;
   }
 
   .content-block {
     width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 
   .titel {
     white-space: normal;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .date-author,
+  .content-preview {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .content-preview {
+    -webkit-line-clamp: 4;
+  }
+
+  ::v-deep(.date-block::before),
+  ::v-deep(.date-block::after) {
+    display: none !important;
   }
 }
 </style>

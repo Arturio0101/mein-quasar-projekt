@@ -1,10 +1,11 @@
 <template>
   <q-page padding>
-    <h1>Home Page</h1>
-    <p>This is text on the home page ;)</p>
+    <h1>{{ t('home.title') }}</h1>
+    <p>{{ t('home.text') }}</p>
   </q-page>
 </template>
 
 <script setup>
-// Можно оставить пустым или удалить весь скрипт
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
